@@ -1,0 +1,227 @@
+programming review
+    proposal
+        presentation [good]
+            sources [good]
+                wired hdmi [good]
+                wireless [good]
+            destinations [good]
+                projector [good]
+                google meet share [good]
+
+        video conferencing [good]
+            google meet [good]
+            5 ptz cameras - manual control [good]
+                2 mounted side of projector screen
+                2 mounted on each long wall for u-shaped/boradroom style table orientation
+                1 presenter (feed in front of projector screen)
+
+        audio [good]
+            microphones w/ speech reinforcement [good]
+                gooseneck x12 [good]
+                handheld x2 [good]
+                lavalier x2 [good]
+
+            speakers - ceiling [good]
+
+            bluetooth wall plate - per room  [good]
+                divided - only audio to that room's speakers [good]
+                combined - any bluetooth receiver can be connected to play audio through all the speakers in the space [good]
+
+        control
+            room states - all divided or all combined - partition sensor for automatic [bad, no partition sensors]
+                presentation only available for room states with A
+
+            facilities controller x3 (per room) & x1 wireless
+                camera control (combined only)
+                source selection (combined only)
+                speaker volume/mute controls
+                system on/off
+                live streaming start/stop (combined only)
+
+            
+    
+    prints
+        multipurpose room
+            video presentation
+                crestron nvx
+                    sources
+                        hdmi wall plate
+                        crestron airmedia
+                    destinations
+                        projector
+                        logitech pc nvx share
+
+                hdmi share logitech tap -> logitech pc (standalone, !nvx)
+
+            audio
+                sources
+                    microphones - shure wapt8 x2
+                        a gooseneck (x12)
+                        a wireless (x2)
+                        a lav (x2)
+
+                    a aux/bluetooth
+                    b aux/bluetooth
+                    c aux/bluetooth
+
+                destinations
+                    a ceiling speakers
+                    b ceiling speakers
+                    c ceiling speakers
+
+            video conferencing
+                cameras - crestron automate
+                    a ceiling
+                    a wall x4
+
+            control - crestron cp4n
+                a - logitech tap
+                a - ipad
+                a - crestron tsw-1070
+                b - crestron tsw-1070
+                c - crestron tsw-1070
+
+    concerns
+        no projector screen control - connect relays up down to cp4n relay ports 1+2 
+        USB-202 on anker end mislabeled. says biamp, should be crestron iv-sam-vx2-s.
+        crestron iv-sam-vx2-s usb-c port for adding camera feed, not camera output to video conferencing system. instead adding sdi to usb-a 3.0 converter (included with purchase) and connect sam sdi out to usb converter to usb input on logitech meet computer
+        logitech meet computer supports two usb a device connections. we have two devices. crestron sam and biamp. anker is unnecessary.
+        partition sensors missing. add and tie both via cresnet to cp4n.
+        can only start/stop livestream for the cameras, not a google meet. google meet computer supports livestreaming, but cannot control externally via crestron. would have to feed second hdmi out into sdi of crestron sam to allow start/stop live streaming of google meet feed
+
+engineering review
+    title page
+        verify the drawing index has the proper page numbers/descriptions
+            using client name (community center) instead of room name (multipurpose room 165, 167, 170) for system name throughout drawing package
+            probably want to specify which wall for each wall elevation/section view so they don't all have same page title
+            only wall elevation details on page, but title includes section views.
+
+    lan connection schedule page
+        verify the origin and destination
+            destination should be multipurpose room, not community room
+
+    confirm the room names are labeled consistently throughout the entire drawing package
+        -not consistent
+
+    pull schedule/floor plan/riser/rcp page
+        verify the 'purpose' section
+            CAT-132 is wireless access point, not camera. should prolly label 'wifi wireless access point' and CAT-101+102 'microphone wireless access point'
+
+        verify the floor plan shows all correct locations for j boxes
+            -missing J14, J15, and J16
+
+        all detail callouts are labeled correctly
+            missing logitech tap, hdmi wall plate, shure transcievers, apple iport on wall elevation details
+            -call out partition sensors on floor or ceiling plan
+
+        verify camera horizontal fov is correct on floor plan
+            product page for camera has 56.45 degrees for hfov
+            missing hfov on cameras at j3+j4
+
+    elevation page
+        verify vertical fov of camera is correct
+            should be 40.31 degrees
+
+    rack elevation page
+        verify all equipment that needs power is show on power strip
+            missing second biamp connected to power strip
+            blaze audio powerzone connect 1008, not 254
+            missing logitech google meet computer
+            missing all 3 shure mxwndx 4, 4g, and 8g
+
+    flows
+        verify each cable label for duplicates
+            -B and C ceiling speakers have label SC-502 where speakers are located. C's should have label 503, not 502
+            -CAT-124/128/129 to switch has label crestron TS-1070-B-S, should be TSW-1070-B-S
+            -anker a7516011's USB-202 label biamp but should be crestron iv-sam-vx2-s
+
+        verify every piece of equipment on the sales order is accounted for on the flows
+            -missing apple iport
+            -missing both partition sensors
+            -on sales order powerzone connect 1008 has quantity of 0 instead of 1
+            -on sales order martin c6.8t has quantity of 0 instead of 20
+            -rlnk-1615v not in flows, but is present on rack elevation (unsure if required)
+
+
+        verify there are service ports/pulls accounted for.
+            -missing service port on rack connected to switch.
+
+    control flows
+        is power strip connected to switch
+            -not connected
+
+
+        
+CAT-101 - MXWAPT8 #1 to switch
+CAT-102 - MXWAPT8 #2 to switch
+CAT-103 - BIAMP 1-1 to switch
+CAT-104 - BIAMP 1-2 to switch
+CAT-105 - BIAMP 1-1 to switch
+CAT-106 - BIAMP 1-2 to switch
+CAT-107 - AMP to switch
+CAT-108 - A audio wall plate to switch
+CAT-109 - B audio wall plate to switch
+CAT-110 - C audio wall plate to switch
+CAT-111 - projector decoder to switch
+CAT-112 - projector to switch
+CAT-113 - google meet encoder to switch
+CAT-114 - airmedea encoder to switch
+CAT-115 - google meet share/magewell decoder to switch
+CAT-116 - program audio decoder to switch
+CAT-117 - A hdmi wall plate to switch
+CAT-118 - A ceiling cam to switch
+CAT-119 - a wall 1 cam to switch
+CAT-120 - a wall 2 cam to switch
+CAT-121 - a wall 3 cam to switch
+CAT-122 - a wall 4 cam to switch
+CAT-123 - crestron sam to switch
+CAT-124 - A TSW to switch
+CAT-125 - SHURE MXWNDX4 to switch
+CAT-126 - SHURE MXWNDX4G to switch
+CAT-127 - SHURE MXWNDX8G to switch
+CAT-128 - B TSW to switch
+CAT-129 - C TSW to switch
+CAT-130 - CP4N to switch
+CAT-131 - NVX DIR2 to switch
+CAT-132 - wifi wap to switch
+CAT-201 - logitech tap to lan/usb converter
+
+HDMI-101 - projector decoder to projector
+HDMI-301 - nvx program video/audio decoder to magewell
+HDMI-401 - logitech comp to nvx encoder
+HDMI-402 - airmedia to nvx encoder
+
+LLC-301 - biamp in 1 to nvx decoder aux L prog audio
+LLC-302 - biamp in 2 to nvx decoder aux R prog audio
+LLC-401 - biamp out 1 to amp 1
+LLC-402 - biamp out 2 to amp 2
+LLC-403 - biamp out 3 to amp 3
+
+SC-501 - A Speakers to amp
+SC-502 - B Speakers to amp
+SC-502 - C Speakers to amp
+
+PWR-101 - projector to power
+PWR-102 - switch to power
+PWR-103 - shure mxwndx4 to power
+PWR-104 - shure mxwndx4g to power
+PWR-105 - shure mxwndx8g to power
+PWR-106 - cp4n to power
+PWR-107 - nvx dir2 to power
+PWR-108 - creston sam to power
+PWR-109 - logitech meet computer to power
+PWR-110 - airmedia to power
+PWR-111 - biamp 1 to power
+PWR-112 - biamp 2 to power
+PWR-113 - crestron chasis to power
+PWR-114 - amp to power
+
+USB-201 - biamp to anker
+USB-202 - biamp to anker (should be crestron iv-sam)
+USB-301 - magewell to logitech comp
+USB-302 - anker to logtech comp
+
+
+
+
+            

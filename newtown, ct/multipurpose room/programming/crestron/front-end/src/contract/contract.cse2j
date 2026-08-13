@@ -1,0 +1,19 @@
+{
+  "name": "system",
+  "timestamp": "2026-06-03 00:00:00.000",
+  "version": "1.0.0.0",
+  "schema_version": 1,
+  "extra_value": "Visionpoint room control UI — replace with SIMPL-exported contract when available",
+  "signals": {
+    "states": {
+      "boolean": {},
+      "numeric": {},
+      "string": {}
+    },
+    "events": {
+      "boolean": {},
+      "numeric": {},
+      "string": {}
+    }
+  }
+}

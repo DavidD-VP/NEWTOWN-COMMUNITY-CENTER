@@ -1,0 +1,1 @@
+import{j as s}from"./vendor-react-BnyKi054.js";import{bk as o,bl as e,bm as r}from"./vendor-mui-icons-DZ1qGzzb.js";import{l as t}from"./app-runtime-dpZmBeT2.js";const m=m=>t({label:m.Label,cardIcon:s.jsx(r,{}),mutedIcon:s.jsx(e,{}),unmutedIcon:s.jsx(o,{}),mutedLabel:"Off",unmutedLabel:"On",sliderProps:m.BrightnessSliderProps,muteButtonProps:m.MuteButtonProps});export{m as L};
