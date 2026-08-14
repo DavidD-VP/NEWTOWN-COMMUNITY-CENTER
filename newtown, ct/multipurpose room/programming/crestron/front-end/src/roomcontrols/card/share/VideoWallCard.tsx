@@ -53,6 +53,7 @@ import {
 	overlayButtonBorder,
 	overlayButtonBorderHover,
 	shadowActiveHover,
+	gradientActive,
 } from '../../theme/tokens';
 import { selectionMenuItemSx } from '../../component/selectionPopoverStyles';
 

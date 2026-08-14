@@ -364,7 +364,7 @@ export const callAudioChannel = {
 	},
 } as const;
 
-export type CallChannelConfig = typeof callVideoChannel;
+export type CallChannelConfig = typeof callVideoChannel | typeof callAudioChannel;
 export type CallChannelConnectConfig = CallChannelConfig['connect'];
 export type CallChannelInCallConfig = CallChannelConfig['inCall'];
 export type CallChannelKey = 'video' | 'audio';

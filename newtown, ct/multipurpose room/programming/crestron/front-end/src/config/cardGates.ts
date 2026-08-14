@@ -5,8 +5,8 @@
  *                even if the card is hidden.
  * - `visible`  — sole gate for mounting the card on a page.
  *
- * Nav tabs: App shows a page when `pageHasVisibleCards` is true — the same card
- * builders each page uses, with at least one card ready to mount.
+ * Nav tabs: App shows a page when `pageHasVisibleCards` is true — lightweight
+ * signal-gate checks in pageNavVisibility.ts (no card component imports).
  *
  * Per-control `*Visible` flags (e.g. `muteVisible`, `volumeVisible`) are control capabilities
  * on an already-mounted card — not card gates. Audio uses card `visible` + `*Visible` per control.
