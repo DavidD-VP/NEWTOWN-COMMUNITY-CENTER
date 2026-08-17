@@ -232,23 +232,6 @@ const App = () => {
 		);
 	}
 
-	if (system.name !== 'mpr1' && system.name !== 'mpr2' && system.name !== 'mpr3') {
-		return (
-			<Box
-				sx={{
-					backgroundColor: 'background.default',
-					width: '100%',
-					height: '100%',
-					display: 'flex',
-					justifyContent: 'center',
-					alignItems: 'center',
-				}}
-			>
-				Unknown System
-			</Box>
-		);
-	}
-
 	return (
 		<OverlayOpenProvider>
 		<NavigationDismissProvider>

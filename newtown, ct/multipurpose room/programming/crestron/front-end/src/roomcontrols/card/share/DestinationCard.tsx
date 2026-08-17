@@ -331,6 +331,8 @@ const DestinationCardInner: React.FC<DestinationCardProps> = (props) => {
 					</Box>
 				);
 			}}
+			pressHint='Tap to change source'
+			emptyCaption='Tap to share source'
 		/>
 	);
 };

@@ -41,6 +41,7 @@ import { ctBtn } from '../ctCardStyles';
 import NumericKeypadPopover from '../../component/NumericKeypadPopover';
 import { selectionMenuItemSx } from '../../component/selectionPopoverStyles';
 import { useCloseOverlayWhenLocked } from '../../hooks/useCloseOverlayWhenLocked';
+import CardPressHint from '../../component/CardPressHint';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -242,18 +243,10 @@ const AccessLevelCardInner: React.FC<AccessLevelCardProps> = (props) => {
 							</Typography>
 						</Box>
 						{!unlocked && (
-							<Typography
-								variant='caption'
-								sx={{
-									lineHeight: 1.1,
-									fontWeight: 400,
-									fontStyle: 'italic',
-									color: 'rgba(255,255,255,0.75)',
-								}}
-								noWrap
-							>
-								Enter PIN to change
-							</Typography>
+							<CardPressHint>Enter PIN to change</CardPressHint>
+						)}
+						{unlocked && (
+							<CardPressHint>Tap to set</CardPressHint>
 						)}
 					</Box>
 					{lockButton}

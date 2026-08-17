@@ -115,6 +115,8 @@ const RoomStateCardInner: React.FC<RoomStateCardProps> = (props) => {
 			optionType='room state'
 			disableSelect={selectLocked}
 			locked={selectLocked}
+			pressHint='Tap to set'
+			emptyCaption='Tap to set'
 			additionalButtons={additionalButtons}
 		/>
 	);

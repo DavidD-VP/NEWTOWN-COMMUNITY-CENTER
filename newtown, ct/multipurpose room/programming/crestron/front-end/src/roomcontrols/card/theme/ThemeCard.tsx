@@ -38,6 +38,7 @@ import {
 	shadowActiveHover,
 } from '../../theme/tokens';
 import { useCloseOverlayWhenLocked } from '../../hooks/useCloseOverlayWhenLocked';
+import CardPressHint from '../../component/CardPressHint';
 import { getThemeByCatalogIndex, themeCatalog } from './themeOptions';
 
 // ── Types ────────────────────────────────────────────────────────────
@@ -202,6 +203,9 @@ const ThemeCardInner: React.FC<ThemeCardProps> = (props) => {
 								{currentOption?.name}
 							</Box>
 						</Typography>
+						{!settingsLocked && (
+							<CardPressHint>Tap to set</CardPressHint>
+						)}
 					</Box>
 				</CardActionArea>
 			</Card>

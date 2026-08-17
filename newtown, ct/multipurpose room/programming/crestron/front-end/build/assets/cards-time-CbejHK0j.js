@@ -1,1 +1,0 @@
-import{j as e}from"./vendor-react-BnyKi054.js";import{A as s}from"./vendor-mui-icons-BOzxtBjm.js";import{u as t,w as o}from"./app-runtime-BRWBNmg8.js";const r=r=>{const i=t(e=>e.booleans[r.settingsLocked]??!1);return e.jsx(o,{signal:r.timeSignal,title:r.title,cardIcon:r.cardIcon??e.jsx(s,{}),disableSelect:i})},i=s=>({label:s.title,children:e.jsx(r,{...s})});export{i as T};

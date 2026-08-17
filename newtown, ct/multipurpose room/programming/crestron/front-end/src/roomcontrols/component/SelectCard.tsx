@@ -39,6 +39,7 @@ import SelectListToolbar, { type SelectListToolbarConfig } from './SelectListToo
 import TextKeyboardPopover from './TextKeyboardPopover';
 import { CardButtonGroup } from '../card/ctCardStyles';
 import { useCloseOverlayWhenLocked } from '../hooks/useCloseOverlayWhenLocked';
+import CardPressHint from './CardPressHint';
 
 /** Above list overlay (1300) and bottom nav (1400). */
 const NESTED_KEYBOARD_Z_INDEX = 1500;
@@ -113,6 +114,10 @@ export type SelectCardProps = {
     onSelect?: (value: number) => void;
     /** Optional pinned toolbar for SIMPL-backed paging and search. */
     listToolbar?: SelectListToolbarConfig;
+    /** Hint shown below the value when the card is pressable. Defaults to "Tap to select". */
+    pressHint?: string;
+    /** Placeholder caption when pressable but nothing is selected. Defaults to "Tap to select". */
+    emptyCaption?: string;
 };
 
 // ── Component ────────────────────────────────────────────────────────
@@ -188,13 +193,21 @@ const SelectCard: React.FC<SelectCardProps> = (props) => {
     } else if (hasNoOptions) {
         cardCaption = `No ${props.optionType ? props.optionType + 's' : 'options'} available`;
     } else {
-        cardCaption = 'Tap to select';
+        cardCaption = props.emptyCaption ?? 'Tap to select';
     }
+
+    const hasValueCaption = Boolean(activeSelection || (props.fixedCaption && selectDisabled));
+    const showPressHint = !selectDisabled && (
+        Boolean(activeSelection) || (hasNoOptions && hasActiveSearch)
+    );
+    const pressHint = activeSelection?.value === 0 && props.emptyCaption != null
+        ? props.emptyCaption
+        : (props.pressHint ?? 'Tap to select');
 
     const captionMarqueeSx = {
         lineHeight: 1.1,
-        fontWeight: (activeSelection || props.fixedCaption) ? 600 : 400,
-        fontStyle: (activeSelection || props.fixedCaption) ? 'normal' : 'italic',
+        fontWeight: hasValueCaption ? 600 : 400,
+        fontStyle: hasValueCaption ? 'normal' : 'italic',
         color: 'rgba(255,255,255,0.9)',
     } as const;
 
@@ -306,6 +319,9 @@ const SelectCard: React.FC<SelectCardProps> = (props) => {
                                 {cardCaption}
                             </OverflowMarqueeText>
                         )}
+                        {showPressHint ? (
+                            <CardPressHint>{pressHint}</CardPressHint>
+                        ) : null}
                     </Box>
                     {props.additionalButtons && props.additionalButtons.length > 0 && (
                         <Box

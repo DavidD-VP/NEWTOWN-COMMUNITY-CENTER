@@ -27,6 +27,7 @@ import {
 
 import NumericKeypadPopover from './NumericKeypadPopover';
 import { useCloseOverlayWhenLocked } from '../hooks/useCloseOverlayWhenLocked';
+import CardPressHint from './CardPressHint';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -77,6 +78,8 @@ const NumericKeypadCard: React.FC<NumericKeypadCardProps> = (props) => {
     }, []);
 
     const cardCaption = currentValue.trim().length > 0 ? currentValue : 'Tap to enter';
+    const hasValue = currentValue.trim().length > 0;
+    const showPressHint = hasValue && !props.disableSelect;
 
     return (
         <Box sx={{ width: '100%', position: 'relative' }}>
@@ -150,6 +153,9 @@ const NumericKeypadCard: React.FC<NumericKeypadCardProps> = (props) => {
                         >
                             {cardCaption}
                         </Typography>
+                        {showPressHint ? (
+                            <CardPressHint>Tap to set</CardPressHint>
+                        ) : null}
                     </Box>
                     {props.additionalButton}
                 </CardActionArea>

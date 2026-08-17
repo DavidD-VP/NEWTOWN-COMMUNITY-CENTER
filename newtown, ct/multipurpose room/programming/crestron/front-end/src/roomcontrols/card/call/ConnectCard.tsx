@@ -46,6 +46,7 @@ import {
 	connectCardHeaderSx,
 	sxCardBtnGroupSlot,
 } from '../../component/connectCardStyles';
+import CardPressHint from '../../component/CardPressHint';
 
 const connectSelectCardHoverSx = {
 	'&:hover': { boxShadow: shadowActiveHover },
@@ -226,6 +227,9 @@ export const ConnectStringRow: React.FC<{
 						>
 							{hasValue ? currentValue : emptyCaption}
 						</OverflowMarqueeText>
+						{hasValue ? (
+							<CardPressHint>Tap to set</CardPressHint>
+						) : null}
 					</Box>
 				</CardActionArea>
 			</Card>

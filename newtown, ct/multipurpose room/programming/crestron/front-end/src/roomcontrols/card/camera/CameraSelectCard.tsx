@@ -92,6 +92,7 @@ const CameraSelectCard = (props: CameraSelectCardProps): CardProps => {
 					cardIcon={<VideocamIcon />}
 					options={options}
                     optionType='camera'
+					pressHint='Tap to change camera'
 					additionalButtons={additionalButtons}
 				/>
 			</Box>

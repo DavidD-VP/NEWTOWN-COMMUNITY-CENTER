@@ -30,6 +30,7 @@ import {
 	ctrlBtnIconSize,
 	ctrlBtnMinWidth,
 	overlayButtonBg,
+	overlayButtonBgHover,
 	overlayButtonBorder,
 	overlayButtonContainedColor,
 	cardBorderRadius,
@@ -99,15 +100,19 @@ const discBtnSx = {
 		border: 'none',
 		color: '#fff',
 		'& .MuiSvgIcon-root': { fontSize: discIconSize, color: '#fff' },
-		'&:hover': { backgroundColor: 'rgba(255,255,255,0.1)', border: 'none' },
+		'&:hover': {
+			backgroundColor: overlayButtonBgHover,
+			border: 'none',
+		},
 	},
 	'&.MuiButton-contained': {
-		backgroundColor: 'rgba(255,255,255,0.2)',
-		border: 'none',
-		color: '#fff',
+		...sxCtrlBtn['&.MuiButton-contained'],
 		boxShadow: 'none',
-		'& .MuiSvgIcon-root': { fontSize: discIconSize, color: '#fff' },
-		'&:hover': { backgroundColor: 'rgba(255,255,255,0.25)', boxShadow: 'none', border: 'none' },
+		'& .MuiSvgIcon-root': { fontSize: discIconSize, color: overlayButtonContainedColor },
+		'&:hover': {
+			...sxCtrlBtn['&.MuiButton-contained']['&:hover'],
+			boxShadow: 'none',
+		},
 	},
 } as const;
 

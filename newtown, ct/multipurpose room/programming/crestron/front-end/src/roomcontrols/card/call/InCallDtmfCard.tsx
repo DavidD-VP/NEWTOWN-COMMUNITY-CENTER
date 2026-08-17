@@ -20,6 +20,7 @@ import {
 	cardIconSize,
 	shadowActiveHover,
 } from '../../theme/tokens';
+import CardPressHint from '../../component/CardPressHint';
 
 const BATCH_MAX_LENGTH = 32;
 
@@ -156,6 +157,9 @@ const InCallDtmfCardInner: React.FC<InCallDtmfCardProps> = ({
 						>
 							{hasTones ? tonesFromStore : 'Tap to send DTMF'}
 						</Typography>
+						{hasTones ? (
+							<CardPressHint>Tap to set</CardPressHint>
+						) : null}
 					</Box>
 				</CardActionArea>
 			</Card>

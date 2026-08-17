@@ -20,6 +20,7 @@ import {
 
 import TouchPanelOverlay from '../../component/TouchPanelOverlay';
 import { useCloseOverlayWhenLocked } from '../../hooks/useCloseOverlayWhenLocked';
+import CardPressHint from '../../component/CardPressHint';
 
 import CheckIcon from '@mui/icons-material/Check';
 import TvOffIcon from '@mui/icons-material/TvOff';
@@ -378,8 +379,11 @@ const VideoWallCardInner: React.FC<VideoWallCardProps> = (props) => {
 			</Box>
 		);
 	} else {
-		caption = 'Tap to route all';
+		caption = 'Tap to share source';
 	}
+
+	const hasHeaderValue = consensusValue === -1 || Boolean(currentOption);
+	const showHeaderHint = !selectLocked && hasHeaderValue;
 
 	// ── Header card click → "route all" popup ──────────────────────────────
 	const handleHeaderClick = React.useCallback(() => {
@@ -532,14 +536,17 @@ const VideoWallCardInner: React.FC<VideoWallCardProps> = (props) => {
 							variant='caption'
 							sx={{
 								lineHeight: 1.1,
-								fontWeight: currentOption ? 600 : 400,
-								fontStyle: currentOption ? 'normal' : 'italic',
+								fontWeight: hasHeaderValue ? 600 : 400,
+								fontStyle: hasHeaderValue ? 'normal' : 'italic',
 								color: 'rgba(255,255,255,0.9)',
 							}}
 							noWrap
 						>
 							{caption}
 						</Typography>
+						{showHeaderHint ? (
+							<CardPressHint>Tap to change source</CardPressHint>
+						) : null}
 					</Box>
 					{hasLayouts && (
 						<Button
@@ -762,6 +769,11 @@ const VideoWallCardInner: React.FC<VideoWallCardProps> = (props) => {
 														{currentSrc.Label}
 													</Typography>
 												</Box>
+												{!destDisabled ? (
+													<CardPressHint sx={{ fontSize: 'clamp(8px, 1.1vw, 20px)' }}>
+														Tap to change source
+													</CardPressHint>
+												) : null}
 											</Box>
 										</Box>
 									</Box>
@@ -818,6 +830,11 @@ const VideoWallCardInner: React.FC<VideoWallCardProps> = (props) => {
 											{currentSrc ? currentSrc.Label : 'No source'}
 										</Typography>
 									</Box>
+									{!destDisabled ? (
+										<CardPressHint sx={{ fontSize: 'clamp(8px, 1.1vw, 20px)', textAlign: 'center' }}>
+											{currentSrc ? 'Tap to change source' : 'Tap to share source'}
+										</CardPressHint>
+									) : null}
 								</>
 							)}
 						</CardActionArea>
